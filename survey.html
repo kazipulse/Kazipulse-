@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumer Survey - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .nav {
+      max-width: 850px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 35px auto;
+      padding: 0 20px 60px;
+    }
+
+    .survey-header {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    .survey-header h1 {
+      margin-bottom: 8px;
+    }
+
+    .survey-header p {
+      color: #667085;
+    }
+
+    .meta {
+      display: flex;
+      gap: 20px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .meta span {
+      background: #eef4ff;
+      color: #155eef;
+      padding: 8px 12px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .question {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .question h2 {
+      font-size: 17px;
+      margin-bottom: 17px;
+    }
+
+    .option {
+      display: block;
+      border: 1px solid #d0d5dd;
+      padding: 13px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      border-color: #155eef;
+      background: #f8faff;
+    }
+
+    .option input {
+      margin-right: 8px;
+    }
+
+    .submit {
+      width: 100%;
+      background: #155eef;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .submit:hover {
+      background: #004eea;
+    }
+
+    .completion {
+      display: none;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    .success-icon {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .completion h2 {
+      color: #008a45;
+      margin-bottom: 10px;
+    }
+
+    .earned {
+      font-size: 30px;
+      font-weight: bold;
+      color: #155eef;
+      margin: 15px 0;
+    }
+
+    .dashboard-button {
+      display: inline-block;
+      background: #155eef;
+      color: white;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .warning {
+      background: #fff7df;
+      border-left: 5px solid #f0a500;
+      padding: 14px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 20px;
+      }
+
+      .survey-header,
+      .question,
+      .completion {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div id="surveyContent">
+
+    <section class="survey-header">
+
+      <h1>Consumer Shopping Survey</h1>
+
+      <p>
+        Tell us about your shopping habits and preferences.
+        Your answers help us understand consumer opinions.
+      </p>
+
+      <div class="meta">
+        <span>⏱ 5–10 minutes</span>
+        <span>💰 Reward: 50 KES</span>
+        <span>📋 5 Questions</span>
+      </div>
+
+    </section>
+
+    <div class="warning">
+      <strong>Before you begin:</strong>
+      Answer all required questions carefully. Once this survey has
+      been successfully submitted, it cannot be completed
