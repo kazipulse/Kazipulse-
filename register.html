@@ -3,309 +3,325 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register - KaziPulse</title>
+  <title>KaziPulse - Register</title>
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
-    }
-
-    header {
-      background: #155eef;
+      margin: 0;
+      min-height: 100vh;
+      background: #0b1220;
       color: white;
-      padding: 18px 20px;
-    }
-
-    .nav {
-      max-width: 900px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .home {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
+      padding: 20px;
     }
 
     .container {
-      max-width: 600px;
-      margin: 45px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 5px 22px rgba(0,0,0,0.08);
+      max-width: 450px;
+      margin: 30px auto;
+      background: #151f32;
+      padding: 25px;
+      border-radius: 18px;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
     .subtitle {
       text-align: center;
-      color: #667085;
+      color: #aeb8c9;
       margin-bottom: 25px;
-    }
-
-    .fee {
-      background: #eef4ff;
-      border: 1px solid #c7d7fe;
-      padding: 18px;
-      border-radius: 12px;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .fee strong {
-      display: block;
-      font-size: 30px;
-      color: #155eef;
-      margin-top: 5px;
     }
 
     label {
       display: block;
-      font-weight: bold;
-      margin: 15px 0 7px;
+      margin: 14px 0 7px;
+      font-size: 14px;
     }
 
     input {
       width: 100%;
       padding: 13px;
-      border: 1px solid #d0d5dd;
-      border-radius: 8px;
-      font-size: 15px;
+      border: 1px solid #33415c;
+      border-radius: 10px;
+      background: #0d1627;
+      color: white;
       outline: none;
     }
 
     input:focus {
-      border-color: #155eef;
+      border-color: #4f8cff;
     }
 
-    .payment {
-      margin-top: 22px;
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 18px;
+    .fee {
+      background: #0d1627;
+      border-radius: 10px;
+      padding: 14px;
+      margin: 15px 0;
+      line-height: 1.6;
     }
 
-    .payment h3 {
-      margin-bottom: 8px;
-    }
-
-    .payment p {
-      color: #475467;
-      font-size: 14px;
-      margin: 6px 0;
-    }
-
-    .terms {
-      display: flex;
-      gap: 9px;
-      align-items: flex-start;
-      margin-top: 20px;
-      font-size: 13px;
-      color: #475467;
-    }
-
-    .terms input {
-      width: auto;
-      margin-top: 3px;
+    .fee strong {
+      font-size: 20px;
     }
 
     button {
       width: 100%;
-      border: none;
-      background: #155eef;
-      color: white;
+      margin-top: 20px;
       padding: 14px;
-      border-radius: 9px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
       font-size: 16px;
       font-weight: bold;
-      margin-top: 22px;
-      cursor: pointer;
     }
 
-    button:hover {
-      background: #004eea;
+    .terms {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #c0c8d6;
+    }
+
+    .terms input {
+      width: auto;
+      margin-top: 2px;
     }
 
     .login {
       text-align: center;
       margin-top: 20px;
-      color: #667085;
+      color: #aeb8c9;
     }
 
-    .login a {
-      color: #155eef;
-      font-weight: bold;
+    a {
+      color: #60a5fa;
       text-decoration: none;
     }
 
     .notice {
-      background: #fff7df;
-      border-left: 4px solid #f0a500;
+      background: #17243a;
+      border-left: 4px solid #2563eb;
       padding: 12px;
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 13px;
-      color: #5d4800;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #667085;
-      font-size: 13px;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        margin-top: 25px;
-      }
-
-      .card {
-        padding: 22px;
-      }
+      color: #cbd5e1;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">KaziPulse</div>
-    <a class="home" href="index.html">← Home</a>
-  </div>
-</header>
-
 <div class="container">
 
-  <div class="card">
+  <h1>KaziPulse</h1>
 
-    <h1>Create Your Account</h1>
+  <div class="subtitle">
+    Create your account
+  </div>
 
-    <p class="subtitle">
-      Join KaziPulse and access surveys, referrals and tournaments.
-    </p>
+  <form id="registrationForm">
+
+    <label>Full Name</label>
+    <input
+      type="text"
+      id="fullName"
+      placeholder="Enter your full name"
+      required
+    >
+
+    <label>Phone Number</label>
+    <input
+      type="tel"
+      id="phone"
+      placeholder="07XXXXXXXX"
+      required
+    >
+
+    <label>Email Address</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+      required
+    >
+
+    <label>Password</label>
+    <input
+      type="password"
+      id="password"
+      placeholder="Minimum 6 characters"
+      required
+    >
+
+    <label>Referral Code (Optional)</label>
+    <input
+      type="text"
+      id="referral"
+      placeholder="Enter referral code"
+    >
 
     <div class="fee">
-      Registration Fee
-      <strong>KES 120</strong>
+      Registration Fee<br>
+      <strong>KSh 120</strong><br>
+      Payment Method: LOOP
     </div>
 
-    <form id="registrationForm">
-
-      <label for="fullName">Full Name</label>
-      <input
-        type="text"
-        id="fullName"
-        placeholder="Enter your full name"
-        required
-      >
-
-      <label for="phone">Phone Number</label>
-      <input
-        type="tel"
-        id="phone"
-        placeholder="07XXXXXXXX"
-        required
-      >
-
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="you@example.com"
-        required
-      >
-
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        placeholder="Create a password"
-        minlength="6"
-        required
-      >
-
-      <label for="referral">Referral Code (Optional)</label>
-      <input
-        type="text"
-        id="referral"
-        placeholder="Enter referral code"
-      >
-
-      <div class="payment">
-
-        <h3>Registration Payment</h3>
-
-        <p>
-          Registration fee: <strong>KES 120</strong>
-        </p>
-
-        <p>
-          Payment method: <strong>Loop</strong>
-        </p>
-
-        <p>
-          Your payment instructions and payment reference will be
-          verified before your account is activated for the live platform.
-        </p>
-
-        <label for="paymentReference">
-          Loop Payment Reference
-        </label>
-
-        <input
-          type="text"
-          id="paymentReference"
-          placeholder="Enter your payment reference"
-          required
-        >
-
-      </div>
-
-      <div class="terms">
-
-        <input type="checkbox" id="terms" required>
-
-        <span>
-          I confirm that I have read the KaziPulse terms and understand
-          that registration does not guarantee earnings. Rewards depend
-          on eligible activities and the applicable platform rules.
-        </span>
-
-      </div>
-
-      <button type="submit">
-        Create KaziPulse Account
-      </button>
-
-    </form>
+    <label>Payment Reference</label>
+    <input
+      type="text"
+      id="paymentReference"
+      placeholder="Enter payment reference"
+    >
 
     <div class="notice">
-      <strong>Important:</strong>
-      This website version records registration information locally
-      for testing. Real Loop payment verification, secure accounts and
-      server-side wallet balances will be connected before real
+      Your payment reference will be recorded for verification.
+    </div>
+
+    <div class="terms">
+      <input type="checkbox" id="terms" required>
+      <span>I agree to the KaziPulse terms and conditions.</span>
+    </div>
+
+    <button type="submit">
+      Create Account
+    </button>
+
+  </form>
+
+  <div class="login">
+    Already have an account?
+    <a href="login.html">Login</a>
+  </div>
+
+</div>
+
+<script>
+
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const fullName =
+    document.getElementById("fullName").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim().toLowerCase();
+
+  const password =
+    document.getElementById("password").value;
+
+  const referral =
+    document.getElementById("referral").value.trim();
+
+  const paymentReference =
+    document.getElementById("paymentReference").value.trim();
+
+  if (!fullName || !phone || !email || !password) {
+    alert("Please complete all required fields.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must contain at least 6 characters.");
+    return;
+  }
+
+  if (!document.getElementById("terms").checked) {
+    alert("Please accept the terms and conditions.");
+    return;
+  }
+
+  /* Automatic registration number */
+  const registrationNumber =
+    "KZP-" + Math.floor(100000 + Math.random() * 900000);
+
+  /* Automatic referral code */
+  const referralCode =
+    "KAZI" +
+    Math.random()
+      .toString(36)
+      .substring(2, 8)
+      .toUpperCase();
+
+  const user = {
+
+    registrationNumber: registrationNumber,
+
+    name: fullName,
+
+    phone: phone,
+
+    email: email,
+
+    password: password,
+
+    referralCode: referralCode,
+
+    referredBy: referral || null,
+
+    registrationFee: 120,
+
+    paymentMethod: "LOOP",
+
+    paymentReference: paymentReference || "Not provided",
+
+    paymentStatus: paymentReference
+      ? "Pending Verification"
+      : "Payment Pending",
+
+    wallet: {
+      survey: 0,
+      referral: 0,
+      tournament: 0,
+      total: 0
+    },
+
+    surveysCompleted: 0,
+
+    referrals: 0,
+
+    tournamentEntries: 0,
+
+    createdAt: new Date().toISOString()
+
+  };
+
+  /* Save user */
+  localStorage.setItem(
+    "kaziPulseUser",
+    JSON.stringify(user)
+  );
+
+  /* Log user in immediately */
+  localStorage.setItem(
+    "kaziPulseLoggedIn",
+    "true"
+  );
+
+  alert(
+    "Account created successfully!\n\n" +
+    "Registration Number: " +
+    registrationNumber
+  );
+
+  /* Go directly to dashboard */
+  window.location.href = "dashboard.html";
+
+});
+
+</script>
+
+</body>
+</html>
