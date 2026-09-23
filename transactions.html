@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions - Kazipulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    h1 {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .transaction:last-child {
+      border-bottom: none;
+    }
+
+    .details h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .details p {
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    .amount {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .credit {
+      color: #059669;
+    }
+
+    .debit {
+      color: #dc2626;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 4px 8px;
+      border-radius: 20px;
+      background: #ecfdf5;
+      color: #047857;
+      font-size: 11px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 35px 10px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .transaction {
+        align-items: flex-start;
+      }
+
+      .amount {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">Kazipulse</div>
+    <a href="dashboard.html" class="back">← Dashboard</a>
+  </header>
+
+  <main class="container">
+
+    <div class="card">
+
+      <h1>Transactions</h1>
+
+      <p class="subtitle">
+        View your Kazipulse payment and earnings history.
+      </p>
+
+      <div id="transactionsList">
+
+        <div class="transaction">
+          <div class="details">
+            <h3>Registration Payment</h3>
+            <p>Account registration fee</p>
+            <span class="status">Completed</span>
+          </div>
+          <div class="amount debit">
+            - KSh 120
+          </div>
+        </div>
+
+        <div class="transaction">
+          <div class="details">
+            <h3>Survey Earnings</h3>
+            <p>Survey participation reward</p>
+            <span class="status">Completed</span>
+          </div>
+          <div class="amount credit">
+            + KSh 0
+          </div>
+        </div>
+
+        <div class="transaction">
+          <div class="details">
+            <h3>Referral Earnings</h3>
+            <p>Referral commission</p>
+            <span class="status">Completed</span>
+          </div>
+          <div class="amount credit">
+            + KSh 0
+          </div>
+        </div>
+
+        <div class="transaction">
+          <div class="details">
+            <h3>Withdrawal</h3>
+            <p>M-PESA withdrawal</p>
+            <span class="status">Pending</span>
+          </div>
+          <div class="amount debit">
+            - KSh 0
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
