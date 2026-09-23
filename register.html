@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KaziPulse - Register</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>KaziPulse - Registration Payment</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       font-family: Arial, sans-serif;
@@ -20,16 +26,19 @@
     }
 
     .container {
-      max-width: 450px;
-      margin: 30px auto;
+      max-width: 430px;
+      margin: 40px auto;
+    }
+
+    .box {
       background: #151f32;
-      padding: 25px;
+      padding: 28px;
       border-radius: 18px;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
     .subtitle {
@@ -38,15 +47,34 @@
       margin-bottom: 25px;
     }
 
+    .amount {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .payment-info {
+      background: #0d1627;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .payment-info strong {
+      color: #60a5fa;
+    }
+
     label {
       display: block;
-      margin: 14px 0 7px;
+      margin-bottom: 7px;
       font-size: 14px;
     }
 
     input {
       width: 100%;
-      padding: 13px;
+      padding: 14px;
       border: 1px solid #33415c;
       border-radius: 10px;
       background: #0d1627;
@@ -54,67 +82,53 @@
       outline: none;
     }
 
-    input:focus {
-      border-color: #4f8cff;
-    }
-
-    .fee {
-      background: #0d1627;
-      border-radius: 10px;
-      padding: 14px;
-      margin: 15px 0;
-      line-height: 1.6;
-    }
-
-    .fee strong {
-      font-size: 20px;
-    }
-
     button {
       width: 100%;
-      margin-top: 20px;
       padding: 14px;
-      border: none;
+      margin-top: 18px;
+      border: 0;
       border-radius: 10px;
       background: #2563eb;
       color: white;
       font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    .terms {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+    .note {
       margin-top: 18px;
+      color: #aeb8c9;
       font-size: 13px;
-      color: #c0c8d6;
+      line-height: 1.5;
+      text-align: center;
     }
 
-    .terms input {
-      width: auto;
-      margin-top: 2px;
+    .success {
+      display: none;
+      text-align: center;
     }
 
-    .login {
+    .success h2 {
+      color: #5ee28a;
+    }
+
+    .reg-number {
+      background: #0d1627;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .back {
+      display: block;
       text-align: center;
       margin-top: 20px;
-      color: #aeb8c9;
-    }
-
-    a {
       color: #60a5fa;
       text-decoration: none;
     }
 
-    .notice {
-      background: #17243a;
-      border-left: 4px solid #2563eb;
-      padding: 12px;
-      margin-top: 15px;
-      font-size: 13px;
-      color: #cbd5e1;
-    }
   </style>
 </head>
 
@@ -122,202 +136,184 @@
 
 <div class="container">
 
-  <h1>KaziPulse</h1>
+  <div class="box" id="paymentBox">
 
-  <div class="subtitle">
-    Create your account
-  </div>
+    <h1>KaziPulse</h1>
 
-  <form id="registrationForm">
+    <div class="subtitle">
+      Complete Registration
+    </div>
 
-    <label>Full Name</label>
-    <input
-      type="text"
-      id="fullName"
-      placeholder="Enter your full name"
-      required
-    >
+    <div class="amount">
+      KSh 120
+    </div>
 
-    <label>Phone Number</label>
+    <div class="payment-info">
+
+      <strong>Registration Fee</strong><br>
+
+      Amount: KSh 120<br>
+
+      Payment destination: LOOP<br>
+
+      Your registered mobile number:
+      <strong id="registeredPhone">---</strong>
+
+    </div>
+
+    <label for="paymentPhone">
+      Mobile Number to use for payment
+    </label>
+
     <input
       type="tel"
-      id="phone"
+      id="paymentPhone"
       placeholder="07XXXXXXXX"
-      required
     >
 
-    <label>Email Address</label>
-    <input
-      type="email"
-      id="email"
-      placeholder="Enter your email"
-      required
-    >
-
-    <label>Password</label>
-    <input
-      type="password"
-      id="password"
-      placeholder="Minimum 6 characters"
-      required
-    >
-
-    <label>Referral Code (Optional)</label>
-    <input
-      type="text"
-      id="referral"
-      placeholder="Enter referral code"
-    >
-
-    <div class="fee">
-      Registration Fee<br>
-      <strong>KSh 120</strong><br>
-      Payment Method: LOOP
-    </div>
-
-    <label>Payment Reference</label>
-    <input
-      type="text"
-      id="paymentReference"
-      placeholder="Enter payment reference"
-    >
-
-    <div class="notice">
-      Your payment reference will be recorded for verification.
-    </div>
-
-    <div class="terms">
-      <input type="checkbox" id="terms" required>
-      <span>I agree to the KaziPulse terms and conditions.</span>
-    </div>
-
-    <button type="submit">
-      Create Account
+    <button id="payButton">
+      Pay KSh 120
     </button>
 
-  </form>
+    <div class="note">
+      The payment button shown here is a payment-flow placeholder
+      until the official payment/checkout integration is connected.
+      It must not be treated as proof of payment.
+    </div>
 
-  <div class="login">
-    Already have an account?
-    <a href="login.html">Login</a>
+  </div>
+
+
+  <div class="box success" id="successBox">
+
+    <h1>KaziPulse</h1>
+
+    <h2>Account Created ✓</h2>
+
+    <p>
+      Your registration has been received.
+    </p>
+
+    <div class="reg-number" id="registrationNumber">
+      KZP-000000
+    </div>
+
+    <p>
+      Complete and verify the KSh 120 registration payment
+      before your account is activated.
+    </p>
+
+    <a class="back" href="login.html">
+      Go to Login
+    </a>
+
   </div>
 
 </div>
 
+
 <script>
 
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
+const savedUser =
+  localStorage.getItem("kaziPulseUser");
 
-  event.preventDefault();
+if (!savedUser) {
 
-  const fullName =
-    document.getElementById("fullName").value.trim();
+  window.location.href = "register.html";
 
-  const phone =
-    document.getElementById("phone").value.trim();
+}
 
-  const email =
-    document.getElementById("email").value.trim().toLowerCase();
+const user = JSON.parse(savedUser);
 
-  const password =
-    document.getElementById("password").value;
 
-  const referral =
-    document.getElementById("referral").value.trim();
+/*
+  Display registered mobile number.
+*/
 
-  const paymentReference =
-    document.getElementById("paymentReference").value.trim();
+document.getElementById(
+  "registeredPhone"
+).textContent = user.phone || "---";
 
-  if (!fullName || !phone || !email || !password) {
-    alert("Please complete all required fields.");
+
+document.getElementById(
+  "paymentPhone"
+).value = user.phone || "";
+
+
+/*
+  Payment button.
+
+  IMPORTANT:
+  This does NOT claim payment was received.
+*/
+
+document.getElementById("payButton")
+.addEventListener("click", function() {
+
+  const paymentPhone =
+    document.getElementById("paymentPhone")
+      .value.trim();
+
+  if (!paymentPhone) {
+
+    alert(
+      "Please enter the mobile number you will use for payment."
+    );
+
     return;
+
   }
 
-  if (password.length < 6) {
-    alert("Password must contain at least 6 characters.");
+  if (paymentPhone.length < 10) {
+
+    alert(
+      "Please enter a valid mobile number."
+    );
+
     return;
+
   }
 
-  if (!document.getElementById("terms").checked) {
-    alert("Please accept the terms and conditions.");
-    return;
-  }
 
-  /* Automatic registration number */
-  const registrationNumber =
-    "KZP-" + Math.floor(100000 + Math.random() * 900000);
+  /*
+    Store the payment request details.
+  */
 
-  /* Automatic referral code */
-  const referralCode =
-    "KAZI" +
-    Math.random()
-      .toString(36)
-      .substring(2, 8)
-      .toUpperCase();
+  user.paymentPhone = paymentPhone;
 
-  const user = {
+  user.paymentAmount = 120;
 
-    registrationNumber: registrationNumber,
+  user.paymentStatus = "Awaiting Payment";
 
-    name: fullName,
+  user.accountStatus = "Payment Verification Required";
 
-    phone: phone,
+  user.paymentRequestedAt =
+    new Date().toISOString();
 
-    email: email,
 
-    password: password,
-
-    referralCode: referralCode,
-
-    referredBy: referral || null,
-
-    registrationFee: 120,
-
-    paymentMethod: "LOOP",
-
-    paymentReference: paymentReference || "Not provided",
-
-    paymentStatus: paymentReference
-      ? "Pending Verification"
-      : "Payment Pending",
-
-    wallet: {
-      survey: 0,
-      referral: 0,
-      tournament: 0,
-      total: 0
-    },
-
-    surveysCompleted: 0,
-
-    referrals: 0,
-
-    tournamentEntries: 0,
-
-    createdAt: new Date().toISOString()
-
-  };
-
-  /* Save user */
   localStorage.setItem(
     "kaziPulseUser",
     JSON.stringify(user)
   );
 
-  /* Log user in immediately */
-  localStorage.setItem(
-    "kaziPulseLoggedIn",
-    "true"
-  );
 
-  alert(
-    "Account created successfully!\n\n" +
-    "Registration Number: " +
-    registrationNumber
-  );
+  /*
+    Show confirmation of the REQUEST,
+    not confirmation that money was received.
+  */
 
-  /* Go directly to dashboard */
-  window.location.href = "dashboard.html";
+  document.getElementById(
+    "paymentBox"
+  ).style.display = "none";
+
+  document.getElementById(
+    "successBox"
+  ).style.display = "block";
+
+  document.getElementById(
+    "registrationNumber"
+  ).textContent =
+    user.registrationNumber;
 
 });
 
