@@ -3,58 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - KaziPulse</title>
+  <title>KaziPulse - Login</title>
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
+      margin: 0;
       min-height: 100vh;
-    }
-
-    header {
-      background: #155eef;
+      background: #0b1220;
       color: white;
-      padding: 18px 20px;
-    }
-
-    .nav {
-      max-width: 900px;
-      margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .home {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 65px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 5px 22px rgba(0,0,0,0.08);
+    .box {
+      width: 100%;
+      max-width: 420px;
+      background: #151f32;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
 
     h1 {
@@ -64,134 +38,86 @@
 
     .subtitle {
       text-align: center;
-      color: #667085;
-      margin-bottom: 28px;
+      color: #aeb8c9;
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
-      font-weight: bold;
-      margin: 16px 0 7px;
+      margin-top: 15px;
+      margin-bottom: 7px;
+      font-size: 14px;
     }
 
     input {
       width: 100%;
-      padding: 14px;
-      border: 1px solid #d0d5dd;
-      border-radius: 8px;
-      font-size: 15px;
+      padding: 13px;
+      border: 1px solid #33415c;
+      border-radius: 10px;
+      background: #0d1627;
+      color: white;
       outline: none;
     }
 
     input:focus {
-      border-color: #155eef;
+      border-color: #4f8cff;
     }
 
     button {
       width: 100%;
-      border: none;
-      background: #155eef;
-      color: white;
+      margin-top: 22px;
       padding: 14px;
-      border-radius: 9px;
+      border: 0;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
       font-size: 16px;
       font-weight: bold;
-      margin-top: 24px;
       cursor: pointer;
     }
 
     button:hover {
-      background: #004eea;
-    }
-
-    .message {
-      display: none;
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    .error {
-      display: block;
-      background: #fff1f1;
-      color: #b42318;
-      border: 1px solid #fecdca;
-    }
-
-    .info {
-      background: #eef4ff;
-      color: #155eef;
-      padding: 14px;
-      border-radius: 9px;
-      margin-bottom: 20px;
-      font-size: 13px;
+      background: #1d4ed8;
     }
 
     .register {
       text-align: center;
-      margin-top: 22px;
-      color: #667085;
+      margin-top: 20px;
+      color: #aeb8c9;
     }
 
-    .register a {
-      color: #155eef;
-      font-weight: bold;
+    a {
+      color: #60a5fa;
       text-decoration: none;
     }
 
-    footer {
+    .error {
+      color: #ff7777;
       text-align: center;
-      padding: 25px;
-      color: #667085;
-      font-size: 13px;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        margin-top: 35px;
-      }
-
-      .card {
-        padding: 24px;
-      }
+      margin-top: 15px;
+      display: none;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">KaziPulse</div>
-    <a class="home" href="index.html">← Home</a>
-  </div>
-</header>
+  <div class="box">
 
-<div class="container">
+    <h1>KaziPulse</h1>
 
-  <div class="card">
-
-    <h1>Welcome Back</h1>
-
-    <p class="subtitle">
-      Login to your KaziPulse account
-    </p>
-
-    <div class="info">
-      For this project version, account information is stored
-      locally on the device for testing.
+    <div class="subtitle">
+      Login to your account
     </div>
 
     <form id="loginForm">
 
-      <label for="email">Email Address</label>
+      <label for="login">Email or Phone Number</label>
 
       <input
-        type="email"
-        id="email"
-        placeholder="you@example.com"
+        type="text"
+        id="login"
+        placeholder="Enter email or phone"
         required
       >
 
@@ -200,7 +126,7 @@
       <input
         type="password"
         id="password"
-        placeholder="Enter your password"
+        placeholder="Enter password"
         required
       >
 
@@ -208,92 +134,75 @@
         Login
       </button>
 
+      <div class="error" id="errorMessage"></div>
+
     </form>
 
-    <div id="errorMessage" class="message"></div>
-
-    <p class="register">
+    <div class="register">
       Don't have an account?
       <a href="register.html">Create Account</a>
-    </p>
+    </div>
 
   </div>
 
-</div>
+  <script>
 
-<footer>
-  © 2026 KaziPulse. All rights reserved.
-</footer>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
 
-<script>
-  const loginForm = document.getElementById("loginForm");
-  const errorMessage = document.getElementById("errorMessage");
+      event.preventDefault();
 
-  loginForm.addEventListener("submit", function(event) {
+      const login = document.getElementById("login").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
 
-    event.preventDefault();
+      const errorMessage = document.getElementById("errorMessage");
 
-    const email = document
-      .getElementById("email")
-      .value
-      .trim()
-      .toLowerCase();
+      errorMessage.style.display = "none";
 
-    const password = document
-      .getElementById("password")
-      .value;
+      const savedUser = localStorage.getItem("kaziPulseUser");
 
-    const storedUser = localStorage.getItem("kaziPulseUser");
-
-    if (!storedUser) {
-      errorMessage.textContent =
-        "No KaziPulse account was found on this device. Please register first.";
-
-      errorMessage.className = "message error";
-      return;
-    }
-
-    let user;
-
-    try {
-      user = JSON.parse(storedUser);
-    } catch (error) {
-      errorMessage.textContent =
-        "Your saved account data is invalid. Please register again.";
-
-      errorMessage.className = "message error";
-      return;
-    }
-
-    if (
-      email !== user.email ||
-      password !== user.password
-    ) {
-      errorMessage.textContent =
-        "Incorrect email or password.";
-
-      errorMessage.className = "message error";
-      return;
-    }
-
-    if (user.paymentStatus !== "Verified") {
-
-      const proceed = confirm(
-        "Your registration payment is currently marked as Pending Verification.\n\n" +
-        "You can continue to the demo dashboard, but real-money features " +
-        "will remain unavailable until payment verification is connected."
-      );
-
-      if (!proceed) {
+      if (!savedUser) {
+        errorMessage.textContent =
+          "No account found. Please register first.";
+        errorMessage.style.display = "block";
         return;
       }
-    }
 
-    localStorage.setItem("kaziPulseLoggedIn", "true");
+      let user;
 
-    window.location.href = "dashboard.html";
-  });
-</script>
+      try {
+        user = JSON.parse(savedUser);
+      } catch (error) {
+        errorMessage.textContent =
+          "Account data is corrupted. Please register again.";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      const emailMatch =
+        user.email &&
+        user.email.toLowerCase() === login;
+
+      const phoneMatch =
+        user.phone &&
+        user.phone.toLowerCase() === login;
+
+      if ((emailMatch || phoneMatch) && user.password === password) {
+
+        localStorage.setItem("kaziPulseLoggedIn", "true");
+
+        window.location.href = "dashboard.html";
+
+      } else {
+
+        errorMessage.textContent =
+          "Incorrect email/phone or password.";
+
+        errorMessage.style.display = "block";
+      }
+
+    });
+
+  </script>
 
 </body>
-  </html>
+</html>
