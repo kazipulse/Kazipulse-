@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .nav {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .home {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 65px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 5px 22px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 16px 0 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #155eef;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      background: #155eef;
+      color: white;
+      padding: 14px;
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 24px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #004eea;
+    }
+
+    .message {
+      display: none;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .error {
+      display: block;
+      background: #fff1f1;
+      color: #b42318;
+      border: 1px solid #fecdca;
+    }
+
+    .info {
+      background: #eef4ff;
+      color: #155eef;
+      padding: 14px;
+      border-radius: 9px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .register {
+      text-align: center;
+      margin-top: 22px;
+      color: #667085;
+    }
+
+    .register a {
+      color: #155eef;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 35px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+    <a class="home" href="index.html">← Home</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Welcome Back</h1>
+
+    <p class="subtitle">
+      Login to your KaziPulse account
+    </p>
+
+    <div class="info">
+      For this project version, account information is stored
+      locally on the device for testing.
+    </div>
+
+    <form id="loginForm">
+
+      <label for="email">Email Address</label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="you@example.com"
+        required
+      >
+
+      <label for="password">Password</label>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        required
+      >
+
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
+
+    <div id="errorMessage" class="message"></div>
+
+    <p class="register">
+      Don't have an account?
+      <a href="register.html">Create Account</a>
+    </p>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 KaziPulse. All rights reserved.
+</footer>
+
+<script>
+  const loginForm = document.getElementById("loginForm");
+  const errorMessage = document.getElementById("errorMessage");
+
+  loginForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const email = document
+      .getElementById("email")
+      .value
+      .trim()
+      .toLowerCase();
+
+    const password = document
+      .getElementById("password")
+      .value;
+
+    const storedUser = localStorage.getItem("kaziPulseUser");
+
+    if (!storedUser) {
+      errorMessage.textContent =
+        "No KaziPulse account was found on this device. Please register first.";
+
+      errorMessage.className = "message error";
+      return;
+    }
+
+    let user;
+
+    try {
+      user = JSON.parse(storedUser);
+    } catch (error) {
+      errorMessage.textContent =
+        "Your saved account data is invalid. Please register again.";
+
+      errorMessage.className = "message error";
+      return;
+    }
+
+    if (
+      email !== user.email ||
+      password !== user.password
+    ) {
+      errorMessage.textContent =
+        "Incorrect email or password.";
+
+      errorMessage.className = "message error";
+      return;
+    }
+
+    if (user.paymentStatus !== "Verified") {
+
+      const proceed = confirm(
+        "Your registration payment is currently marked as Pending Verification.\n\n" +
+        "You can continue to the demo dashboard, but real-money features " +
+        "will remain unavailable until payment verification is connected."
+      );
+
+      if (!proceed) {
+        return;
+      }
+    }
+
+    localStorage.setItem("kaziPulseLoggedIn", "true");
+
+    window.location.href = "dashboard.html";
+  });
+</script>
+
+</body>
+  </html>
