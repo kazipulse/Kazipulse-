@@ -3,106 +3,309 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - KaziPulse</title>
+
+  <title>KaziPulse Dashboard</title>
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
+      margin: 0;
+      background: #0b1220;
+      color: white;
     }
 
     header {
-      background: #155eef;
-      color: white;
-      padding: 15px 20px;
-    }
-
-    .nav {
-      max-width: 1150px;
-      margin: auto;
+      background: #151f32;
+      padding: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .user-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .user-name {
-      font-weight: bold;
+    header h2 {
+      margin: 0;
     }
 
     .logout {
-      background: white;
-      color: #155eef;
-      border: none;
-      padding: 8px 13px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
+      color: #ff8080;
+      text-decoration: none;
+      font-size: 14px;
     }
 
     .container {
-      max-width: 1150px;
+      max-width: 900px;
       margin: auto;
-      padding: 30px 20px 50px;
+      padding: 20px;
     }
 
     .welcome {
-      margin-bottom: 25px;
+      background: #151f32;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
     }
 
     .welcome h1 {
-      font-size: 30px;
-      margin-bottom: 5px;
+      margin: 0 0 8px;
     }
 
-    .welcome p {
-      color: #667085;
+    .muted {
+      color: #aeb8c9;
     }
 
-    .verification {
-      background: #fff7df;
-      border-left: 5px solid #f0a500;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 25px;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: #151f32;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #aeb8c9;
       font-size: 14px;
     }
 
-    .balance {
-      background: linear-gradient(135deg, #155eef, #6c5ce7);
-      color: white;
-      padding: 28px;
-      border-radius: 16px;
-      margin-bottom: 25px;
-    }
-
-    .balance-label {
-      opacity: 0.9;
-      font-size: 14px;
-    }
-
-    .balance-amount {
-      font-size: 38px;
+    .amount {
+      font-size: 25px;
       font-weight: bold;
-      margin: 5px 0 15px;
     }
 
-    .balance a {
-      display:
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .menu a {
+      background: #1d4ed8;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .info {
+      background: #151f32;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #29364d;
+    }
+
+    @media (max-width: 600px) {
+      .cards,
+      .menu {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h2>KaziPulse</h2>
+  <a href="#" class="logout" id="logout">Logout</a>
+</header>
+
+<div class="container">
+
+  <div class="welcome">
+    <h1>Welcome, <span id="userName">User</span> 👋</h1>
+    <div class="muted">
+      Registration No: <strong id="registrationNumber">---</strong>
+    </div>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Total Balance</h3>
+      <div class="amount">
+        KSh <span id="totalBalance">0</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Surveys Completed</h3>
+      <div class="amount" id="surveysCompleted">
+        0
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Referrals</h3>
+      <div class="amount" id="referrals">
+        0
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Tournament Entries</h3>
+      <div class="amount" id="tournamentEntries">
+        0
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info">
+
+    <h3>Account Information</h3>
+
+    <div class="row">
+      <span>Name</span>
+      <strong id="accountName">---</strong>
+    </div>
+
+    <div class="row">
+      <span>Email</span>
+      <strong id="accountEmail">---</strong>
+    </div>
+
+    <div class="row">
+      <span>Phone</span>
+      <strong id="accountPhone">---</strong>
+    </div>
+
+    <div class="row">
+      <span>Referral Code</span>
+      <strong id="referralCode">---</strong>
+    </div>
+
+  </div>
+
+  <div class="menu">
+
+    <a href="surveys.html">
+      📋 Surveys
+    </a>
+
+    <a href="wallet.html">
+      💰 Wallet
+    </a>
+
+    <a href="referrals.html">
+      👥 Referrals
+    </a>
+
+    <a href="withdraw.html">
+      💸 Withdraw
+    </a>
+
+    <a href="transactions.html">
+      📊 Transactions
+    </a>
+
+    <a href="tournament.html">
+      🏆 Tournament
+    </a>
+
+    <a href="profile.html">
+      👤 Profile
+    </a>
+
+    <a href="about.html">
+      ℹ️ About KaziPulse
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+
+const savedUser = localStorage.getItem("kaziPulseUser");
+
+if (!savedUser) {
+
+  alert("Please register or login first.");
+
+  window.location.href = "login.html";
+
+} else {
+
+  try {
+
+    const user = JSON.parse(savedUser);
+
+    document.getElementById("userName").textContent =
+      user.name || "User";
+
+    document.getElementById("registrationNumber").textContent =
+      user.registrationNumber || "---";
+
+    document.getElementById("accountName").textContent =
+      user.name || "---";
+
+    document.getElementById("accountEmail").textContent =
+      user.email || "---";
+
+    document.getElementById("accountPhone").textContent =
+      user.phone || "---";
+
+    document.getElementById("referralCode").textContent =
+      user.referralCode || "---";
+
+    document.getElementById("surveysCompleted").textContent =
+      user.surveysCompleted || 0;
+
+    document.getElementById("referrals").textContent =
+      user.referrals || 0;
+
+    document.getElementById("tournamentEntries").textContent =
+      user.tournamentEntries || 0;
+
+    const total =
+      user.wallet && user.wallet.total
+        ? user.wallet.total
+        : 0;
+
+    document.getElementById("totalBalance").textContent =
+      total;
+
+  } catch (error) {
+
+    alert("Unable to load your account.");
+
+    window.location.href = "register.html";
+
+  }
+
+}
+
+
+/* Logout */
+
+document.getElementById("logout").addEventListener("click", function(event) {
+
+  event.preventDefault();
+
+  localStorage.setItem("kaziPulseLoggedIn", "false");
+
+  window.location.href = "login.html";
+
+});
+
+</script>
+
+</body>
+</html>
