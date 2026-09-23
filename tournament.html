@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournament - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .nav {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #155eef, #6c5ce7);
+      color: white;
+      padding: 30px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      line-height: 1.6;
+      opacity: 0.92;
+    }
+
+    .fee {
+      display: inline-block;
+      background: white;
+      color: #155eef;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #eaecf0;
+      font-size: 14px;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: #667085;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+
+    .rules {
+      line-height: 1.8;
+      color: #475467;
+      font-size: 14px;
+    }
+
+    .rules li {
+      margin-left: 20px;
+      margin-bottom: 7px;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      background: #155eef;
+      color: white;
+      padding: 14px;
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    .button.disabled {
+      background: #98a2b3;
+      cursor: not-allowed;
+    }
+
+    .status {
+      display: none;
+      padding: 13px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .status.success {
+      display: block;
+      background: #ecfdf3;
+      color: #067647;
+    }
+
+    .status.warning {
+      display: block;
+      background: #fff7df;
+      color: #8a5b00;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 13px 10px;
+      border-bottom: 1px solid #eaecf0;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      color: #667085;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .rank {
+      font-weight: bold;
+      color: #155eef;
+    }
+
+    .notice {
+      background: #fff7df;
+      border-left: 5px solid #f0a500;
+      padding: 15px;
+      border-radius: 8px;
+      color: #6b4e00;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 10px;
+      color: #155eef;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 25px;
+      }
+
+      th,
+      td {
+        padding: 10px 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>🏆 KaziPulse Tournament</h1>
+
+    <p>
+      Take part in the KaziPulse tournament and compete
+      according to the published tournament rules.
+    </p>
+
+    <div class="fee">
+      Entry Fee: KES 100
+    </div>
+  </section>
+
+  <section class="grid">
+
+    <div class="card">
+
+      <h2>Tournament Information</h2>
+
+      <div class="info-row">
+        <span class="label">Entry Fee</span>
+        <span class="value">KES 100</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Status</span>
+        <span class="value" id="tournamentStatus">
+          Not Registered
+        </span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Your Entries</span>
+        <span class="value" id="entryCount">
+          0
+        </span>
+      </div>
+
+      <button
+        class="button"
+        id="registerButton"
+        onclick="registerTournament()"
+      >
+        Register for Tournament
+      </button>
+
+      <div id="statusMessage" class="status"></div>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Tournament Rules</h2>
+
+      <ul class="rules">
+        <li>Participants must have a KaziPulse account.</li>
+        <li>The tournament entry fee is KES 100.</li>
+        <li>Only eligible registered participants can compete.</li>
+        <li>Scores and rankings must follow the published tournament rules.</li>
+        <li>Prize details will be published before the tournament begins.</li>
+        <li>Participation does not guarantee a prize.</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+  <section class="card">
+
+    <h2>🏅 Leaderboard</h2>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Participant</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="rank">1</td>
+          <td>Participant 1</td>
+          <td>—</td>
+        </tr>
+
+        <tr>
+          <td class="rank">2</td>
+          <td>Participant 2</td>
+          <td>—</td>
+        </tr>
+
+        <tr>
+          <td class="rank">3</td>
+          <td>Participant 3</td>
+          <td>—</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <div class="notice">
+      The leaderboard shown here is a demo display.
+      A real tournament leaderboard requires a secure
+      backend/database so scores cannot be changed by users
+      through browser storage.
+    </div>
+
+  </section>
+
+  <a class="back" href="dashboard.html">
+    ← Back to Dashboard
+  </a>
+
+</main>
+
+<footer>
+  © 2026 KaziPulse. All rights reserved.
+</footer>
+
+<script>
+
+  const storedUser =
+    localStorage.getItem("kaziPulseUser");
+
+  const loggedIn =
+    localStorage.getItem("kaziPulseLoggedIn");
+
+  if (loggedIn !== "true" || !storedUser) {
+    window.location.href = "login.html";
+  }
+
+  let user;
+
+  try {
+    user = JSON.parse(storedUser);
+  } catch (error) {
+    window.location.href = "login.html";
+  }
+
+  if (user) {
+
+    const entries =
+      Number(user.tournamentEntries) || 0;
+
+    document.getElementById(
+      "entryCount"
+    ).textContent = entries;
+
+    if (entries > 0) {
+
+      document.getElementById(
+        "tournamentStatus"
+      ).textContent = "Registered";
+
+      const button =
+        document.getElementById("registerButton");
+
+      button.textContent =
+        "Already Registered";
+
+      button.classList.add("disabled");
+
+      button.disabled = true;
+    }
+  }
+
+  function registerTournament() {
+
+    if (!user) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    const alreadyRegistered =
+      Number(user.tournamentEntries) || 0;
+
+    if (alreadyRegistered > 0) {
+      showMessage(
+        "You are already registered for this tournament.",
+        "warning"
+      );
+      return;
+    }
+
+    const confirmed = confirm(
+      "Tournament entry fee is KES 100. Continue with demo registration?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    user.tournamentEntries = 1;
+
+    if (!user.transactions) {
+      user.transactions = [];
+    }
+
+    user.transactions.push({
+      type: "Tournament Registration",
+      description: "KaziPulse Tournament Entry",
+      amount: -100,
+      date: new Date().toLocaleString(),
+      status: "Pending Verification"
+    });
+
+    localStorage.setItem(
+      "kaziPulseUser",
+      JSON.stringify(user)
+    );
+
+    document.getElementById(
+      "entryCount"
+    ).textContent = "1";
+
+    document.getElementById(
+      "tournamentStatus"
+    ).textContent = "Registered";
+
+    const button =
+      document.getElementById("registerButton");
+
+    button.textContent =
+      "Already Registered";
+
+    button.classList.add("disabled");
+
+    button.disabled = true;
+
+    showMessage(
+      "Tournament registration recorded in demo mode. Payment verification and real tournament processing will be connected to the backend later.",
+      "success"
+    );
+  }
+
+  function showMessage(message, type) {
+
+    const box =
+      document.getElementById("statusMessage");
+
+    box.textContent = message;
+
+    box.className =
+      "status " + type;
+  }
+
+</script>
+
+</body>
+  </html>
