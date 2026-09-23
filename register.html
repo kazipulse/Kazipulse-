@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .nav {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .home {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 22px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 25px;
+    }
+
+    .fee {
+      background: #eef4ff;
+      border: 1px solid #c7d7fe;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .fee strong {
+      display: block;
+      font-size: 30px;
+      color: #155eef;
+      margin-top: 5px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #155eef;
+    }
+
+    .payment {
+      margin-top: 22px;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .payment h3 {
+      margin-bottom: 8px;
+    }
+
+    .payment p {
+      color: #475467;
+      font-size: 14px;
+      margin: 6px 0;
+    }
+
+    .terms {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #475467;
+    }
+
+    .terms input {
+      width: auto;
+      margin-top: 3px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      background: #155eef;
+      color: white;
+      padding: 14px;
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 22px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #004eea;
+    }
+
+    .login {
+      text-align: center;
+      margin-top: 20px;
+      color: #667085;
+    }
+
+    .login a {
+      color: #155eef;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .notice {
+      background: #fff7df;
+      border-left: 4px solid #f0a500;
+      padding: 12px;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #5d4800;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 25px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+    <a class="home" href="index.html">← Home</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Create Your Account</h1>
+
+    <p class="subtitle">
+      Join KaziPulse and access surveys, referrals and tournaments.
+    </p>
+
+    <div class="fee">
+      Registration Fee
+      <strong>KES 120</strong>
+    </div>
+
+    <form id="registrationForm">
+
+      <label for="fullName">Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        placeholder="Enter your full name"
+        required
+      >
+
+      <label for="phone">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="07XXXXXXXX"
+        required
+      >
+
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="you@example.com"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Create a password"
+        minlength="6"
+        required
+      >
+
+      <label for="referral">Referral Code (Optional)</label>
+      <input
+        type="text"
+        id="referral"
+        placeholder="Enter referral code"
+      >
+
+      <div class="payment">
+
+        <h3>Registration Payment</h3>
+
+        <p>
+          Registration fee: <strong>KES 120</strong>
+        </p>
+
+        <p>
+          Payment method: <strong>Loop</strong>
+        </p>
+
+        <p>
+          Your payment instructions and payment reference will be
+          verified before your account is activated for the live platform.
+        </p>
+
+        <label for="paymentReference">
+          Loop Payment Reference
+        </label>
+
+        <input
+          type="text"
+          id="paymentReference"
+          placeholder="Enter your payment reference"
+          required
+        >
+
+      </div>
+
+      <div class="terms">
+
+        <input type="checkbox" id="terms" required>
+
+        <span>
+          I confirm that I have read the KaziPulse terms and understand
+          that registration does not guarantee earnings. Rewards depend
+          on eligible activities and the applicable platform rules.
+        </span>
+
+      </div>
+
+      <button type="submit">
+        Create KaziPulse Account
+      </button>
+
+    </form>
+
+    <div class="notice">
+      <strong>Important:</strong>
+      This website version records registration information locally
+      for testing. Real Loop payment verification, secure accounts and
+      server-side wallet balances will be connected before real
