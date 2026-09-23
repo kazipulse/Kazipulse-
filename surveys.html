@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Surveys - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .heading {
+      margin-bottom: 25px;
+    }
+
+    .heading h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .heading p {
+      color: #667085;
+    }
+
+    .info {
+      background: #eef4ff;
+      border-left: 5px solid #155eef;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .survey-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .survey-card {
+      background: white;
+      padding: 24px;
+      border-radius: 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .survey-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: #eef4ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .survey-card h2 {
+      font-size: 20px;
+      margin-bottom: 9px;
+    }
+
+    .description {
+      color: #667085;
+      font-size: 14px;
+      min-height: 65px;
+    }
+
+    .details {
+      border-top: 1px solid #eaecf0;
+      margin-top: 15px;
+      padding-top: 15px;
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .reward {
+      color: #008a45;
+      font-weight: bold;
+    }
+
+    .button {
+      display: block;
+      text-align: center;
+      background: #155eef;
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #004eea;
+    }
+
+    .locked {
+      background: #98a2b3;
+      cursor: not-allowed;
+    }
+
+    .bottom {
+      margin-top: 30px;
+    }
+
+    .back {
+      display: inline-block;
+      color: #155eef;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .survey-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .survey-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links a {
+        margin-left: 7px;
+      }
+
+      .nav-links a:first-child {
+        display: none;
+      }
+
+      .heading h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <div class="logo">KaziPulse</div>
+
+    <div class="nav-links">
