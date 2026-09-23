@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Kazipulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+
+    .profile-card,
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      margin-bottom: 18px;
+    }
+
+    .profile-card {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #4f46e5;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .email {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #ecfdf5;
+      color: #047857;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #4f46e5;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      background: #4f46e5;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    .account-links a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid #e5e7eb;
+      text-decoration: none;
+      color: #172033;
+      font-size: 14px;
+    }
+
+    .account-links a:last-child {
+      border-bottom: none;
+    }
+
+    .logout {
+      background: #dc2626;
+    }
+
+    .logout:hover {
+      background: #b91c1c;
+    }
+
+    .message {
+      display: none;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #ecfdf5;
+      color: #047857;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">Kazipulse</div>
+    <a href="dashboard.html" class="back">← Dashboard</a>
+  </header>
+
+  <main class="container">
+
+    <section class="profile-card">
+
+      <div class="avatar" id="avatar">U</div>
+
+      <h1 id="displayName">User</h1>
+
+      <p class="email" id="displayEmail">
+        user@example.com
+      </p>
+
+      <span class="badge">✓ Active Account</span>
+
+    </section>
+
+    <section class="card">
+
+      <h2>Personal Information</h2>
+
+      <form id="profileForm">
+
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            placeholder="07XXXXXXXX"
+          >
+        </div>
+
+        <button type="submit">Save Changes</button>
+
+        <div class="message" id="message">
+          Profile updated successfully.
+        </div>
+
+      </form>
+
+    </section>
+
+    <section class="card">
+
+      <h2>My Account</h2>
+
+      <div class="account-links">
+        <a href="wallet.html">💰 My Wallet</a>
+        <a href="transactions.html">📊 Transactions</a>
+        <a href="referrals.html">🤝 Referrals</a>
+        <a href="withdraw.html">💸 Withdraw</a>
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <button class="logout" onclick="logout()">
+        Log Out
+      </button>
+
+    </section>
+
+  </main>
+
+  <script>
+    document.getElementById("profileForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!name || !email) {
+        alert("Please enter your name and email.");
+        return;
+      }
+
+      document.getElementById("displayName").textContent = name;
+      document.getElementById("displayEmail").textContent = email;
+      document.getElementById("avatar").textContent =
+        name.charAt(0).toUpperCase();
+
+      document.getElementById("message").style.display = "block";
+    });
+
+    function logout() {
+      if (confirm("Are you sure you want to log out?")) {
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+
+</body>
+            </html>
