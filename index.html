@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaziPulse - Earn From Your Opinion</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #155eef, #6c5ce7);
+      color: white;
+      padding: 75px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .buttons {
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .primary {
+      background: white;
+      color: #155eef;
+    }
+
+    .secondary {
+      border: 1px solid white;
+      color: white;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 55px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #155eef;
+    }
+
+    .price {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      text-align: center;
+      background: white;
+      padding: 25px 15px;
+      border-radius: 14px;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #155eef;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-weight: bold;
+    }
+
+    .notice {
+      background: #fff7df;
+      border-left: 5px solid #f0a500;
+      padding: 18px;
+      border-radius: 8px;
+      margin-top: 25px;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 800px) {
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      nav a {
+        margin-left: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Share Your Opinion. Earn Rewards.</h1>
+
+  <p>
+    Join KaziPulse, participate in surveys, complete opportunities,
+    refer friends and take part in tournaments.
+  </p>
+
+  <div class="buttons">
+    <a class="btn primary" href="register.html">Create Account</a>
+    <a class="btn secondary" href="login.html">Login</a>
+  </div>
+</section>
+
+<section class="container">
+
+  <h2 class="section-title">How KaziPulse Works</h2>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="number">1</div>
+      <h3>Create Account</h3>
+      <p>Register for a KaziPulse account.</p>
+    </div>
+
+    <div class="step">
+      <div class="number">2</div>
+      <h3>Complete Surveys</h3>
+      <p>Find available surveys and submit your answers.</p>
+    </div>
+
+    <div class="step">
+      <div class="number">3</div>
+      <h3>Earn Rewards</h3>
+      <p>Eligible activities add rewards to your wallet.</p>
+    </div>
+
+    <div class="step">
+      <div class="number">4</div>
+      <h3>Withdraw</h3>
+      <p>Request withdrawals according to the platform rules.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="container">
+
+  <h2 class="section-title">Available Opportunities</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Consumer Survey</h3>
+      <p>Tell us about your shopping habits.</p>
+      <div class="price">50 KES</div>
+      <p>Estimated time: 5–10 minutes</p>
+    </div>
+
+    <div class="card">
+      <h3>Technology Survey</h3>
+      <p>Share your opinions about technology.</p>
+      <div class="price">40 KES</div>
+      <p>Estimated time: 5–8 minutes</p>
+    </div>
+
+    <div class="card">
+      <h3>Shopping Survey</h3>
+      <p>Share your experience with products and services.</p>
+      <div class="price">30 KES</div>
+      <p>Estimated time: 5 minutes</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="container">
+
+  <h2 class="section-title">Referral Program</h2>
+
+  <div class="card">
+    <h3>Invite People to KaziPulse</h3>
+
+    <p>
+      Every registered member can receive a unique referral code.
+      Eligible referral rewards will be recorded in the member's wallet
+      according to the referral program rules.
+    </p>
+
+    <div class="notice">
+      Referral rewards and eligibility requirements will be clearly
+      displayed inside the member dashboard.
+    </div>
+  </div>
+
+</section>
+
+<section class="container">
+
+  <h2 class="section-title">KaziPulse Tournament</h2>
+
+  <div class="card">
+    <h3>Join the Tournament</h3>
+
+    <p>
+      Participate in special KaziPulse competitions and track your
+      position on the leaderboard.
+    </p>
+
+    <div class="price">Registration: 100 KES</div>
+
+    <p>
+      Tournament rules, eligibility, registration status and prizes
+      will be displayed before participation.
+    </p>
+  </div>
+
+</section>
+
+<section class="container">
+
+  <h2 class="section-title">Registration</h2>
+
+  <div class="card">
+
+    <h3>Membership Registration</h3>
+
+    <div class="price">120 KES</div>
+
+    <p>
+      Registration requires payment of the stated membership fee.
+      Payment instructions and terms will be displayed during registration.
+    </p>
+
+    <div class="notice">
+      Payment does not guarantee earnings. Rewards depend on completed
+      eligible activities and the applicable KaziPulse rules.
