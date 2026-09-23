@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kazipulse Admin Dashboard</title>
+
+  <title>KaziPulse Admin Dashboard</title>
 
   <style>
     * {
@@ -14,57 +15,523 @@
     }
 
     body {
-      background: #f4f6f8;
-      color: #222;
+      background: #f4f7fb;
+      color: #172033;
     }
 
     header {
-      background: #111827;
+      background: #155eef;
       color: white;
-      padding: 18px;
+      padding: 18px 20px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    header h1 {
-      font-size: 20px;
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
     }
 
-    .admin-badge {
-      background: #16a34a;
-      padding: 7px 12px;
-      border-radius: 20px;
-      font-size: 12px;
+    .logout {
+      background: white;
+      color: #155eef;
+      padding: 9px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
-      padding: 20px;
+      padding: 25px 20px;
     }
 
     .welcome {
       background: white;
-      padding: 20px;
+      padding: 22px;
       border-radius: 14px;
       margin-bottom: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     }
 
-    .welcome h2 {
-      margin-bottom: 8px;
+    .welcome h1 {
+      margin-bottom: 7px;
+      font-size: 24px;
+    }
+
+    .welcome p {
+      color: #667085;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 15px;
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
     .stat {
       background: white;
-      padding: 18px;
+      padding: 20px;
       border-radius: 14px;
-      box-shadow: 0
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .stat span {
+      display: block;
+      color: #667085;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .stat strong {
+      font-size: 25px;
+    }
+
+    .section {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+      font-size: 19px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .menu a {
+      background: #f2f4f7;
+      color: #172033;
+      text-decoration: none;
+      padding: 17px 10px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .menu a:hover {
+      background: #e4e7ec;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      border: none;
+      background: #155eef;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .success {
+      display: none;
+      color: #15803d;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    .warning {
+      background: #fff7df;
+      border-left: 4px solid #f0a500;
+      padding: 13px;
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #667085;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">KaziPulse Admin</div>
+
+    <a href="#" class="logout" onclick="logoutAdmin()">
+      Logout
+    </a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="welcome">
+    <h1>Owner Dashboard 👋</h1>
+    <p>Manage your KaziPulse platform from one place.</p>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <span>Total Users</span>
+      <strong id="totalUsers">0</strong>
+    </div>
+
+    <div class="stat">
+      <span>Active Surveys</span>
+      <strong id="totalSurveys">0</strong>
+    </div>
+
+    <div class="stat">
+      <span>Pending Withdrawals</span>
+      <strong>0</strong>
+    </div>
+
+    <div class="stat">
+      <span>Total Paid</span>
+      <strong>KSh 0</strong>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>⚙️ Platform Management</h2>
+
+    <div class="menu">
+
+      <a href="surveys.html">
+        📋 Surveys
+      </a>
+
+      <a href="transactions.html">
+        📊 Transactions
+      </a>
+
+      <a href="withdraw.html">
+        💸 Withdrawals
+      </a>
+
+      <a href="referrals.html">
+        🤝 Referrals
+      </a>
+
+      <a href="tournament.html">
+        🏆 Tournament
+      </a>
+
+      <a href="profile.html">
+        👤 Profile
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>💳 Payment Settings</h2>
+
+    <div class="form-group">
+
+      <label>Registration Fee</label>
+
+      <input
+        type="number"
+        id="registrationFee"
+        value="120"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Payment Method</label>
+
+      <select id="paymentMethod">
+
+        <option value="loop">
+          LOOP
+        </option>
+
+        <option value="mpesa">
+          M-PESA
+        </option>
+
+        <option value="airtel">
+          Airtel Money
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Receiving Account / Till</label>
+
+      <input
+        type="text"
+        id="paymentAccount"
+        placeholder="Enter receiving account or Till"
+      >
+
+    </div>
+
+    <button onclick="savePaymentSettings()">
+      Save Payment Settings
+    </button>
+
+    <div id="saveMessage" class="success">
+      Payment settings saved.
+    </div>
+
+    <div class="warning">
+      This is currently a testing dashboard.
+      Payment settings are stored only in this browser.
+      We will connect them to a secure backend before real-money operation.
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>📋 Create Survey</h2>
+
+    <div class="form-group">
+
+      <label>Survey Title</label>
+
+      <input
+        type="text"
+        id="surveyTitle"
+        placeholder="Example: Customer Shopping Survey"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Survey Reward (KSh)</label>
+
+      <input
+        type="number"
+        id="surveyReward"
+        placeholder="Example: 50"
+      >
+
+    </div>
+
+    <button onclick="createSurvey()">
+      Create Survey
+    </button>
+
+    <div id="surveyMessage" class="success">
+      Survey created successfully.
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 KaziPulse Admin Dashboard
+</footer>
+
+<script>
+
+  /* Temporary protection for the testing version */
+
+  if (
+    sessionStorage.getItem("kaziPulseAdminLoggedIn") !== "true"
+  ) {
+
+    window.location.href = "admin-login.html";
+
+  }
+
+  function logoutAdmin() {
+
+    sessionStorage.removeItem(
+      "kaziPulseAdminLoggedIn"
+    );
+
+    window.location.href = "admin-login.html";
+
+  }
+
+
+  function savePaymentSettings() {
+
+    const fee =
+      document.getElementById("registrationFee").value;
+
+    const method =
+      document.getElementById("paymentMethod").value;
+
+    const account =
+      document.getElementById("paymentAccount").value;
+
+    localStorage.setItem(
+      "kazipulseRegistrationFee",
+      fee
+    );
+
+    localStorage.setItem(
+      "kazipulsePaymentMethod",
+      method
+    );
+
+    localStorage.setItem(
+      "kazipulsePaymentAccount",
+      account
+    );
+
+    document.getElementById("saveMessage")
+      .style.display = "block";
+
+  }
+
+
+  function createSurvey() {
+
+    const title =
+      document.getElementById("surveyTitle").value.trim();
+
+    const reward =
+      document.getElementById("surveyReward").value;
+
+    if (!title || !reward) {
+
+      alert(
+        "Please enter the survey title and reward."
+      );
+
+      return;
+
+    }
+
+    const surveys =
+      JSON.parse(
+        localStorage.getItem(
+          "kazipulseSurveys"
+        ) || "[]"
+      );
+
+    surveys.push({
+
+      title: title,
+
+      reward: Number(reward),
+
+      createdAt: new Date().toISOString(),
+
+      status: "Active"
+
+    });
+
+    localStorage.setItem(
+      "kazipulseSurveys",
+      JSON.stringify(surveys)
+    );
+
+    document.getElementById("surveyTitle").value = "";
+
+    document.getElementById("surveyReward").value = "";
+
+    document.getElementById("surveyMessage")
+      .style.display = "block";
+
+    document.getElementById("totalSurveys")
+      .textContent = surveys.length;
+
+  }
+
+
+  const savedFee =
+    localStorage.getItem(
+      "kazipulseRegistrationFee"
+    );
+
+  const savedMethod =
+    localStorage.getItem(
+      "kazipulsePaymentMethod"
+    );
+
+  const savedAccount =
+    localStorage.getItem(
+      "kazipulsePaymentAccount"
+    );
+
+  if (savedFee) {
+
+    document.getElementById(
+      "registrationFee"
+    ).value = savedFee;
+
+  }
+
+  if (savedMethod) {
+
+    document.getElementById(
+      "paymentMethod"
+    ).value = savedMethod;
+
+  }
+
+  if (savedAccount) {
+
+    document.getElementById(
+      "paymentAccount"
+    ).value = savedAccount;
+
+  }
+
+  const surveys =
+    JSON.parse(
+      localStorage.getItem(
+        "kazipulseSurveys"
+      ) || "[]"
+    );
+
+  document.getElementById(
+    "totalSurveys"
+  ).textContent = surveys.length;
+
+</script>
+
+</body>
+</html>
