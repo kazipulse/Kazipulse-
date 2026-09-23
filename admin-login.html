@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaziPulse Admin Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #f4f7fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: none;
+      border-radius: 9px;
+      background: #155eef;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: #d92d20;
+      text-align: center;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #155eef;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h1>KaziPulse Admin</h1>
+
+  <p class="subtitle">
+    Owner Dashboard Login
+  </p>
+
+  <form id="adminLoginForm">
+
+    <label for="username">Admin Username</label>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Enter admin username"
+      required
+    >
+
+    <label for="password">Admin Password</label>
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter admin password"
+      required
+    >
+
+    <button type="submit">
+      Login to Admin Dashboard
+    </button>
+
+  </form>
+
+  <p class="error" id="errorMessage">
+    Incorrect admin username or password.
+  </p>
+
+  <a class="back" href="index.html">
+    ← Back to KaziPulse
+  </a>
+
+</div>
+
+<script>
+  /*
+    TESTING LOGIN ONLY
+
+    We will replace this with secure server-side
+    authentication before real-money operation.
+  */
+
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "KaziPulse2026!";
+
+  document.getElementById("adminLoginForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      if (
+        username === ADMIN_USERNAME &&
+        password === ADMIN_PASSWORD
+      ) {
+
+        sessionStorage.setItem(
+          "kaziPulseAdminLoggedIn",
+          "true"
+        );
+
+        window.location.href = "admin.html";
+
+      } else {
+
+        document.getElementById("errorMessage")
+          .style.display = "block";
+
+      }
+
+    });
+</script>
+
+</body>
+    </html>
