@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wallet - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .nav {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .heading {
+      margin-bottom: 25px;
+    }
+
+    .heading h1 {
+      font-size: 30px;
+      margin-bottom: 7px;
+    }
+
+    .heading p {
+      color: #667085;
+    }
+
+    .balance-card {
+      background: linear-gradient(135deg, #155eef, #6c5ce7);
+      color: white;
+      padding: 30px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .balance-label {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .balance {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 8px 0 20px;
+    }
+
+    .withdraw-button {
+      display: inline-block;
+      background: white;
+      color: #155eef;
+      padding: 12px 20px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .breakdown {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+      margin-bottom: 25px;
+    }
+
+    .stat {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+    }
+
+    .stat-title {
+      color: #667085;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      color: #155eef;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eaecf0;
+    }
+
+    .transaction:last-child {
+      border-bottom: none;
+    }
+
+    .transaction-name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .transaction-date {
+      color: #667085;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .amount {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .positive {
+      color: #067647;
+    }
+
+    .negative {
+      color: #b42318;
+    }
+
+    .empty {
+      color: #667085;
+      font-size: 14px;
+      padding: 10px 0;
+    }
+
+    .notice {
+      background: #fff7df;
+      border-left: 5px solid #f0a500;
+      padding: 14px;
+      border-radius: 8px;
+      color: #6b4e00;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .links a {
+      background: #f2f4f7;
+      padding: 13px;
+      border-radius: 8px;
+      color: #155eef;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 5px;
+      color: #155eef;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .breakdown {
+        grid-template-columns: 1fr;
+      }
+
+      .links {
+        grid-template-columns: 1fr;
+      }
+
+      .balance {
+        font-size: 34px;
+      }
+
+      .transaction {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="heading">
+    <h1>My Wallet</h1>
+    <p>View your KaziPulse earnings and account transactions.</p>
+  </div>
+
+  <section class="balance-card">
+
+    <div class="balance-label">
+      TOTAL WALLET BALANCE
+    </div>
+
+    <div class="balance">
+      KES <span id="totalBalance">0</span>
+    </div>
+
+    <a
+      href="withdraw.html"
+      class="withdraw-button"
+    >
+      Withdraw
+    </a>
+
+  </section>
+
+  <section class="breakdown">
+
+    <div class="stat">
+      <div class="stat-title">
+        Survey Earnings
+      </div>
+
+      <div class="stat-value">
+        KES <span id="surveyBalance">0</span>
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">
+        Referral Earnings
+      </div>
+
+      <div class="stat-value">
+        KES <span id="referralBalance">0</span>
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">
+        Tournament Earnings
+      </div>
+
+      <div class="stat-value">
+        KES <span id="tournamentBalance">0</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="card">
+
+    <h2>Recent Transactions</h2>
+
+    <div id="transactions">
+      <div class="empty">
+        No transactions yet.
+      </div>
+    </div>
+
+  </section>
+
+  <section class="card">
+
+    <h2>Wallet Actions</h2>
+
+    <div class="links">
+
+      <a href="surveys.html">
+        Take Surveys
+      </a>
+
+      <a href="referrals.html">
+        Refer Friends
+      </a>
+
+      <a href="tournament.html">
+        Tournament
+      </a>
+
+      <a href="transactions.html">
+        All Transactions
+      </a>
+
+      <a href="withdraw.html">
+        Withdraw
+      </a>
+
+      <a href="profile.html">
+        My Profile
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="notice">
+    This wallet is currently a browser-based demo using local
+    storage. It does not hold real funds. Real payment
+    verification, secure balances and withdrawals will require
+    a backend connected to the appropriate payment provider.
+  </section>
+
+  <a
+    href="dashboard.html"
+    class="back"
+  >
+    ← Back to Dashboard
+  </a>
+
+</main>
+
+<footer>
+  © 2026 KaziPulse. All rights reserved.
+</footer>
+
+<script>
+
+  const storedUser =
+    localStorage.getItem("kaziPulseUser");
+
+  const loggedIn =
+    localStorage.getItem("kaziPulseLoggedIn");
+
+  if (loggedIn !== "true" || !storedUser) {
+    window.location.href = "login.html";
+  }
+
+  let user;
+
+  try {
+    user = JSON.parse(storedUser);
+  } catch (error) {
+    window.location.href = "login.html";
+  }
+
+  if (user) {
+
+    if (!user.wallet) {
+      user.wallet = {
+        survey: 0,
+        referral: 0,
+        tournament: 0,
+        total: 0
+      };
+    }
+
+    const survey =
+      Number(user.wallet.survey) || 0;
+
+    const referral =
+      Number(user.wallet.referral) || 0;
+
+    const tournament =
+      Number(user.wallet.tournament) || 0;
+
+    const total =
+      survey + referral + tournament;
+
+    user.wallet.total = total;
+
+    localStorage.setItem(
+      "kaziPulseUser",
+      JSON.stringify(user)
+    );
+
+   
