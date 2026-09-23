@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referrals - KaziPulse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #155eef;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .nav {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .heading {
+      margin-bottom: 25px;
+    }
+
+    .heading h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .heading p {
+      color: #667085;
+    }
+
+    .referral-box {
+      background: linear-gradient(135deg, #155eef, #6c5ce7);
+      color: white;
+      padding: 30px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+    }
+
+    .referral-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .referral-box p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    .code-area {
+      background: rgba(255,255,255,0.15);
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .code-label {
+      font-size: 12px;
+      opacity: 0.85;
+    }
+
+    .code {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin: 5px 0 15px;
+    }
+
+    .copy-button {
+      border: none;
+      background: white;
+      color: #155eef;
+      padding: 10px 17px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .link-box {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .link-box input {
+      flex: 1;
+      border: none;
+      border-radius: 8px;
+      padding: 11px;
+      font-size: 13px;
+      min-width: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+      margin-bottom: 25px;
+    }
+
+    .stat {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+    }
+
+    .stat-title {
+      color: #667085;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .stat-value {
+      font-size: 26px;
+      font-weight: bold;
+      color: #155eef;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .rules {
+      color: #475467;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .notice {
+      background: #fff7df;
+      border-left: 5px solid #f0a500;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 15px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 10px;
+      color: #155eef;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .link-box {
+        flex-direction: column;
+      }
+
+      .code {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KaziPulse</div>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="heading">
+    <h1>Referral Center</h1>
+    <p>Invite people and track your eligible referral activity.</p>
+  </div>
+
+  <section class="referral-box">
+
+    <h2>Invite Friends to KaziPulse</h2>
+
+    <p>
+      Share your referral code or link with people you know.
+      Eligible referral rewards are recorded according to the
+      KaziPulse referral program rules.
+    </p>
+
+    <div class="code-area">
+
+      <div class="code-label">
+        YOUR REFERRAL CODE
+      </div>
+
+      <div class="code" id="referralCode">
+        KAZIXXXX
+      </div>
+
+      <button class="copy-button" onclick="copyCode()">
+        Copy Code
+      </button>
+
+      <div class="link-box">
+
+        <input
+          type="text"
+          id="referralLink"
+          readonly
+        >
+
+        <button
+          class="copy-button"
+          onclick="copyLink()"
+        >
+          Copy Link
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-title">
+        People Referred
+      </div>
+
+      <div class="stat-value" id="referralCount">
+        0
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">
+        Referral Earnings
+      </div>
+
+      <div class="stat-value">
+        KES <span id="referralBalance">0</span>
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">
+        Total Wallet
+      </div>
+
+      <div class="stat-value">
+        KES <span id="totalBalance">0</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="card">
+
+    <h2>How Referrals Work</h2>
+
+    <div class="rules">
+
+      <p>
+        <strong>1.</strong>
+        Share your unique KaziPulse referral code or link.
+      </p>
+
+      <p>
+        <strong>2.</strong>
+        The person you refer uses your code during registration.
+      </p>
+
+      <p>
+        <strong>3.</strong>
+        The referral is recorded on the platform.
+      </p>
+
+      <p>
+        <strong>4.</strong>
+        Where the referral meets the program's eligibility
+        requirements, the applicable reward is credited to the
+        relevant wallet.
+      </p>
+
+    </div>
+
+    <div class="notice">
+      Referral rewards are subject to KaziPulse's published
+      eligibility rules. Registration alone does not guarantee a
+      referral reward.
+    </div>
+
+  </section>
+
+  <a class="back" href="dashboard.html">
+    ← Back to Dashboard
+  </a>
+
+</main>
+
+<footer>
+  © 2026 KaziPulse. All rights reserved.
+</footer>
+
+<script>
+
+  const storedUser =
+    localStorage.getItem("kaziPulseUser");
+
+  const loggedIn =
+    localStorage.getItem("kaziPulseLoggedIn");
+
+  if (loggedIn !== "true" || !storedUser) {
+    window.location.href = "
