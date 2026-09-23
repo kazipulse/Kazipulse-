@@ -3,193 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Available Surveys - KaziPulse</title>
+  <title>KaziPulse - Surveys</title>
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
+      margin: 0;
+      background: #0b1220;
+      color: white;
     }
 
     header {
-      background: #155eef;
-      color: white;
-      padding: 15px 20px;
-    }
-
-    .nav {
-      max-width: 1100px;
-      margin: auto;
+      background: #151f32;
+      padding: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
+    header h2 {
+      margin: 0;
     }
 
-    .nav-links a {
-      color: white;
+    header a {
+      color: #60a5fa;
       text-decoration: none;
-      margin-left: 15px;
-      font-size: 14px;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 850px;
       margin: auto;
-      padding: 35px 20px 60px;
+      padding: 20px;
     }
 
-    .heading {
-      margin-bottom: 25px;
-    }
-
-    .heading h1 {
-      font-size: 30px;
-      margin-bottom: 6px;
-    }
-
-    .heading p {
-      color: #667085;
-    }
-
-    .info {
-      background: #eef4ff;
-      border-left: 5px solid #155eef;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      font-size: 14px;
-    }
-
-    .survey-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .survey-card {
-      background: white;
-      padding: 24px;
+    .intro {
+      background: #151f32;
+      padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-      display: flex;
-      flex-direction: column;
+      margin-bottom: 20px;
     }
 
-    .survey-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      background: #eef4ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 25px;
+    .survey {
+      background: #151f32;
+      padding: 20px;
+      border-radius: 15px;
       margin-bottom: 15px;
     }
 
-    .survey-card h2 {
-      font-size: 20px;
-      margin-bottom: 9px;
-    }
-
-    .description {
-      color: #667085;
-      font-size: 14px;
-      min-height: 65px;
-    }
-
-    .details {
-      border-top: 1px solid #eaecf0;
-      margin-top: 15px;
-      padding-top: 15px;
-    }
-
-    .detail {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 14px;
+    .survey h3 {
+      margin-top: 0;
     }
 
     .reward {
-      color: #008a45;
       font-weight: bold;
+      margin: 10px 0;
     }
 
-    .button {
-      display: block;
-      text-align: center;
-      background: #155eef;
+    button {
+      width: 100%;
+      padding: 13px;
+      border: 0;
+      border-radius: 10px;
+      background: #2563eb;
       color: white;
-      text-decoration: none;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 15px;
       font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
     }
 
-    .button:hover {
-      background: #004eea;
-    }
-
-    .locked {
-      background: #98a2b3;
-      cursor: not-allowed;
-    }
-
-    .bottom {
-      margin-top: 30px;
-    }
-
-    .back {
-      display: inline-block;
-      color: #155eef;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      background: #101828;
-      color: white;
+    .empty {
       text-align: center;
-      padding: 25px;
+      background: #151f32;
+      padding: 30px;
+      border-radius: 15px;
+      color: #aeb8c9;
+    }
+
+    .status {
       font-size: 13px;
-    }
-
-    @media (max-width: 850px) {
-      .survey-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .survey-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links a {
-        margin-left: 7px;
-      }
-
-      .nav-links a:first-child {
-        display: none;
-      }
-
-      .heading h1 {
-        font-size: 26px;
-      }
+      color: #aeb8c9;
+      margin-top: 8px;
     }
   </style>
 </head>
@@ -197,8 +94,109 @@
 <body>
 
 <header>
-  <div class="nav">
+  <h2>KaziPulse</h2>
+  <a href="dashboard.html">Dashboard</a>
+</header>
 
-    <div class="logo">KaziPulse</div>
+<div class="container">
 
-    <div class="nav-links">
+  <div class="intro">
+    <h2>Available Surveys</h2>
+    <p class="status">
+      Complete available surveys and receive the reward shown on each survey.
+    </p>
+  </div>
+
+  <div id="surveyList"></div>
+
+</div>
+
+<script>
+
+const userData = localStorage.getItem("kaziPulseUser");
+
+if (!userData) {
+  window.location.href = "login.html";
+}
+
+const user = JSON.parse(userData);
+
+const surveyList = document.getElementById("surveyList");
+
+const surveys =
+  JSON.parse(localStorage.getItem("kazipulseSurveys")) || [];
+
+const completedSurveys =
+  JSON.parse(localStorage.getItem("kazipulseCompletedSurveys")) || [];
+
+const userCompleted =
+  completedSurveys.filter(
+    item => item.userEmail === user.email
+  );
+
+if (surveys.length === 0) {
+
+  surveyList.innerHTML = `
+    <div class="empty">
+      <h3>No surveys available</h3>
+      <p>Please check again later.</p>
+    </div>
+  `;
+
+} else {
+
+  surveys.forEach((survey, index) => {
+
+    const alreadyCompleted =
+      userCompleted.some(
+        item => String(item.surveyId) === String(survey.id)
+      );
+
+    const card = document.createElement("div");
+
+    card.className = "survey";
+
+    card.innerHTML = `
+      <h3>${survey.title}</h3>
+
+      <div class="reward">
+        Reward: KSh ${Number(survey.reward || 0).toFixed(2)}
+      </div>
+
+      <div class="status">
+        ${alreadyCompleted
+          ? "✓ Completed"
+          : "Available to complete"}
+      </div>
+
+      <br>
+
+      <button
+        ${alreadyCompleted ? "disabled" : ""}
+        onclick="openSurvey(${index})">
+        ${alreadyCompleted ? "Completed" : "Take Survey"}
+      </button>
+    `;
+
+    surveyList.appendChild(card);
+
+  });
+
+}
+
+
+function openSurvey(index) {
+
+  localStorage.setItem(
+    "selectedKazipulseSurvey",
+    JSON.stringify(surveys[index])
+  );
+
+  window.location.href = "survey.html";
+
+}
+
+</script>
+
+</body>
+</html>
