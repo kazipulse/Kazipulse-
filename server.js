@@ -9,20 +9,16 @@ const PORT = process.env.PORT || 3000;
 
 
 /* =========================
-   HOME / HEALTH CHECK
+   HOME
 ========================= */
 
 app.get("/", (req, res) => {
-
-    res.send(
-        "KaziPulse USSD & SMS Backend is running."
-    );
-
+    res.send("KaziPulse USSD & SMS Backend is running.");
 });
 
 
 /* =========================
-   BROWSER USSD TEST
+   BROWSER TEST
 ========================= */
 
 app.get("/test-ussd", (req, res) => {
@@ -48,16 +44,21 @@ app.get("/test-ussd", (req, res) => {
 
 app.post("/ussd", (req, res) => {
 
-    const phoneNumber =
-        req.body.phoneNumber || "";
+    console.log("===== USSD REQUEST RECEIVED =====");
 
-    const text =
-        req.body.text || "";
+    console.log("BODY:", JSON.stringify(req.body));
+
+    console.log("PHONE:", req.body.phoneNumber);
+
+    console.log("TEXT:", req.body.text);
+
+    const phoneNumber = req.body.phoneNumber || "";
+    const text = req.body.text || "";
 
     let response;
 
 
-    /* FIRST USSD REQUEST */
+    /* FIRST REQUEST */
 
     if (text === "") {
 
@@ -190,8 +191,7 @@ KSh 0.00
 
     else if (text === "0") {
 
-        response =
-            "END Thank you for using KaziPulse.";
+        response = "END Thank you for using KaziPulse.";
 
     }
 
@@ -207,8 +207,11 @@ Please try again.`;
     }
 
 
+    console.log("RESPONSE:", response);
+
     res
-        .set("Content-Type", "text/plain")
+        .status(200)
+        .type("text/plain")
         .send(response);
 
 });
@@ -220,8 +223,6 @@ Please try again.`;
 
 app.listen(PORT, "0.0.0.0", () => {
 
-    console.log(
-        `KaziPulse server running on port ${PORT}`
-    );
+    console.log(`KaziPulse server running on port ${PORT}`);
 
 });
